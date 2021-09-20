@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
@@ -18,11 +19,13 @@ const TodoList = ({
   </div>
 );
 
-TodoList.propTypes = {
-  handleChange: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired,
-  handleUpdate: PropTypes.func.isRequired,
-  todos: PropTypes.arrayOf(PropTypes.array()).isRequired,
+const TodolistPropTypes = {
+  handleChange: PropTypes.func,
+  handleDelete: PropTypes.func,
+  handleUpdate: PropTypes.func,
+  todos: PropTypes.array,
 };
+
+PropTypes.checkPropTypes(TodolistPropTypes, 'TodoList');
 
 export default TodoList;

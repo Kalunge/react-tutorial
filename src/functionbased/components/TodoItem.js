@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import PropTypes from 'prop-types';
@@ -57,11 +58,13 @@ const TodoItem = ({
   );
 };
 
-TodoItem.propTypes = {
-  handleChange: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired,
-  handleUpdate: PropTypes.func.isRequired,
-  todo: PropTypes.objectOf(PropTypes.object()).isRequired,
+const TodoItempropTypes = {
+  handleChange: PropTypes.func,
+  handleDelete: PropTypes.func,
+  handleUpdate: PropTypes.func,
+  todo: PropTypes.object,
 };
+
+PropTypes.checkPropTypes(TodoItempropTypes, 'TodoItem');
 
 export default TodoItem;
