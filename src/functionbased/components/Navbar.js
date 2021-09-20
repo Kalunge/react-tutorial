@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   const links = [
@@ -18,15 +18,13 @@ const Navbar = () => {
     <nav className="navBar">
       <ul>
         {' '}
-        {links.map((link) => {
-          return (
-            <li key={link.id}>
-              <NavLink activeClassName="active-link" exact to={link.path}>
-                {link.text}
-              </NavLink>
-            </li>
-          );
-        })}
+        {links.map((link) => (
+          <li key={link.id}>
+            <NavLink activeClassName="active-link" exact to={link.path}>
+              {link.text}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );

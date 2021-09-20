@@ -1,18 +1,16 @@
+/* eslint-disable no-param-reassign */
 import React, { useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import Header from './Header';
 import InputTodo from './InputTodo';
 import TodoList from './TodoList';
-import { v4 as uuidv4 } from 'uuid';
 import NotMatch from './pages/NotMatch';
 import About from './pages/About';
 import Navbar from './Navbar';
 
-
 const TodoContainer = () => {
-  const getSavedTodos = () => {
-    return JSON.parse(localStorage.getItem('todos')) || [];
-  };
+  const getSavedTodos = () => JSON.parse(localStorage.getItem('todos')) || [];
   const [todos, setTodos] = useState(getSavedTodos());
 
   useEffect(() => {
@@ -20,17 +18,15 @@ const TodoContainer = () => {
   }, [todos]);
 
   const handleChange = (id) => {
-    setTodos((prevState) =>
-      prevState.map((todo) => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }
-        return todo;
-      }),
-    );
+    setTodos((prevState) => prevState.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed,
+        };
+      }
+      return todo;
+    }));
   };
 
   const handleDelete = (id) => {

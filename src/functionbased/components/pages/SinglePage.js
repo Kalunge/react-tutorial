@@ -22,8 +22,14 @@ const SinglePage = () => {
   const { title, description } = aboutContent;
   return (
     <div>
-      <h1>H{title}</h1>
-      <h4>H{description}</h4>
+      <h1>
+        H
+        {title}
+      </h1>
+      <h4>
+        H
+        {description}
+      </h4>
     </div>
   );
 };

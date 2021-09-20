@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import styles from './TodoItem.module.css';
 import { FaTrash } from 'react-icons/fa';
+import PropTypes from 'prop-types';
+import styles from './TodoItem.module.css';
 
-const TodoItem = ({ todo, handleChange, handleDelete, handleUpdate }) => {
+const TodoItem = ({
+  todo, handleChange, handleDelete, handleUpdate,
+}) => {
   const [editing, setEditing] = useState(false);
 
   const handleEdit = () => {
@@ -16,8 +19,8 @@ const TodoItem = ({ todo, handleChange, handleDelete, handleUpdate }) => {
   };
 
   const { completed, id, title } = todo;
-  let viewMode = {};
-  let editMode = {};
+  const viewMode = {};
+  const editMode = {};
   if (editing) {
     viewMode.display = 'none';
   } else {
@@ -37,7 +40,7 @@ const TodoItem = ({ todo, handleChange, handleDelete, handleUpdate }) => {
           checked={completed}
           onChange={() => handleChange(id)}
         />
-        <button onClick={() => handleDelete(id)}>
+        <button type="button" onClick={() => handleDelete(id)}>
           <FaTrash style={{ color: 'orangered', fontSize: '16px' }} />
         </button>
         <span style={completed ? completedStyle : null}>{title}</span>
@@ -52,6 +55,13 @@ const TodoItem = ({ todo, handleChange, handleDelete, handleUpdate }) => {
       />
     </li>
   );
+};
+
+TodoItem.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+  handleUpdate: PropTypes.func.isRequired,
+  todo: PropTypes.objectOf(PropTypes.object()).isRequired,
 };
 
 export default TodoItem;
